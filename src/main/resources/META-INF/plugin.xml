@@ -1,0 +1,50 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>inc.kaizen.ui.editor.anukarma-editor</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Anukarma-Editor</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="support@kaizen.inc" url="https://www.kaizen.inc">Kaizen, inc</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>An Intellij plugin for Anukarma framework</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+                name="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaLanguageFileType"
+                language="Anukarma"
+                extensions="karma"/>
+
+        <lang.parserDefinition
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaParserDefinition"/>
+
+        <lang.syntaxHighlighterFactory
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaSyntaxHighlighterFactory"/>
+
+        <colorSettingsPage
+                implementation="inc.kaizen.ui.editor.anukarma.language.settings.AnukarmaColorSettingsPage"/>
+
+        <completion.contributor
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.completion.AnukarmaCompletionContributor"/>
+
+        <codeInsight.lineMarkerProvider
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.marker.AnukarmaLineMarkerProvider"/>
+    </extensions>
+</idea-plugin>

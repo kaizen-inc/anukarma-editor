@@ -1,0 +1,44 @@
+{
+  parserClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Anukarma"
+  psiImplClassSuffix="Impl"
+  psiPackage="inc.kaizen.ui.editor.anukarma.language"
+  psiImplPackage="inc.kaizen.ui.editor.anukarma.language.impl"
+
+  elementTypeHolderClass="inc.kaizen.ui.editor.anukarma.language.IAnukarmaLanguageFileType"
+  elementTypeClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaElementType"
+  tokenTypeClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaTokenType"
+
+  tokens=[
+      EOL=";"
+      SEPARATOR='='
+      OPEN_BRACKET='{'
+      CLOSE_BRACKET='}'
+//      CRLF='regexp:\n'
+//      SPACE='regexp:[ \t]+'
+      LPAR='('
+      RPAR=')'
+      DOT='.'
+      QUOTE='"'
+      BOOLEAN='regexp:([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])'
+      NUMBER='regexp:\d+'
+      IDENTIFIER='regexp:\w+'
+      COMMENT='regexp:;.*'
+      WHITESPACES='regexp:[\n\r\s]*'
+//      SPACE='regexp:\s*'
+    ]
+}
+
+anukarma ::= (PROPERTY|COMMENT|WHITESPACES|PLUGIN_SECTION)*
+
+//WHITESPACES ::= (SPACE|CRLF)+
+
+PROPERTY ::= (KEY WHITESPACES* SEPARATOR WHITESPACES* VALUE)
+KEY ::= stopOnFail | incremental | generateCode
+VALUE ::= BOOLEAN
+
+PLUGIN_SECTION ::= plugins WHITESPACES* OPEN_BRACKET (WHITESPACES|PLUGIN_ID)* CLOSE_BRACKET
+PLUGIN_ID ::= id LPAR QUOTE IDENTIFIER QUOTE RPAR
