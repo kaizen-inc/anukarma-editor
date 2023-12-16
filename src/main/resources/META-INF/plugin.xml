@@ -50,5 +50,19 @@
         <codeInsight.lineMarkerProvider
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.marker.AnukarmaLineMarkerProvider"/>
+
+        <lang.formatter
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.format.AnukarmaFormattingModelBuilder"/>
+
+<!--        <navbar implementation="inc.kaizen.ui.editor.anukarma.language.structure.navbar.AnukarmaStructureAwareNavbar"/>-->
+
+        <!--<annotator
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.annotate.AnukarmaAnnotator"/>
+-->
+        <lang.foldingBuilder
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.fold.AnukarmaFoldingBuilder"/>
     </extensions>
 </idea-plugin>
