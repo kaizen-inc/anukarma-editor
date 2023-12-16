@@ -4,7 +4,7 @@ import com.intellij.icons.AllIcons
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
-import inc.kaizen.ui.editor.anukarma.language.AnukarmaSyntaxHighlighter
+import inc.kaizen.ui.editor.anukarma.language.highlight.AnukarmaSyntaxHighlighter
 
 class AnukarmaColorSettingsPage: ColorSettingsPage {
 

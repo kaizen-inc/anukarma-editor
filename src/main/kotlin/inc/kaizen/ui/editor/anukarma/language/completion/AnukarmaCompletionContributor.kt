@@ -1,25 +1,26 @@
 package inc.kaizen.ui.editor.anukarma.language.completion
 
-import com.intellij.codeInsight.completion.*
-import com.intellij.codeInsight.lookup.LookupElementBuilder
+import com.intellij.codeInsight.completion.CompletionContributor
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.openapi.project.DumbAware
-import com.intellij.patterns.PlatformPatterns
-import com.intellij.util.ProcessingContext
-import inc.kaizen.ui.editor.anukarma.language.IAnukarmaLanguageFileType
+
 
 class AnukarmaCompletionContributor: CompletionContributor(), DumbAware {
-   init {
-        extend(CompletionType.BASIC,
-            PlatformPatterns.psiElement(IAnukarmaLanguageFileType.GENERATECODE),
-            object : CompletionProvider<CompletionParameters>() {
-                public override fun addCompletions(
-                    parameters: CompletionParameters,
-                    context: ProcessingContext,
-                    resultSet: CompletionResultSet
-                ) {
-                    resultSet.addElement(LookupElementBuilder.create("generateCode"))
-                }
-            }
-        )
+
+    private val providers = listOf(
+        BooleanCompletionProvider
+    )
+
+    init {
+        providers.forEach { extend(it) }
+    }
+
+    private fun extend(provider: AnukarmaCompletionProvider) {
+        extend(provider.type, provider.context, provider)
+    }
+
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        super.fillCompletionVariants(parameters, result)
     }
 }

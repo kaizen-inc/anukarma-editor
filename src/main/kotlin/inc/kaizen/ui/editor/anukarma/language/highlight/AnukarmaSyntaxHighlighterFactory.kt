@@ -1,4 +1,4 @@
-package inc.kaizen.ui.editor.anukarma.language
+package inc.kaizen.ui.editor.anukarma.language.highlight
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
 import com.intellij.openapi.project.Project

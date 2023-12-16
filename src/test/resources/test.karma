@@ -1,0 +1,55 @@
+stopOnFail = false
+incremental = false
+generateCode = true
+
+plugins {
+    id("somename")
+}
+
+extensions {
+    file("test/test.karma")
+}
+
+task("IndependentTask") {
+    implementation = "inc.kaizen.anukarma.task.integrationTest.IndependentTask"
+    group = "test"
+    strictDependency = true
+    dependsOn {
+        id("Testing1_SecondTask")
+    }
+}
+
+feature("Testing1") {
+    priority = 2
+    dependsOn {
+        id("Testing2")
+    }
+
+    task("Testing1_FirstTask") {
+        implementation = "inc.kaizen.anukarma.task.integrationTest.FirstTask"
+        strictDependency = true
+    }
+
+    task("Testing1_SecondTask") {
+        implementation = "inc.kaizen.anukarma.task.integrationTest.SecondTask"
+        strictDependency = true
+        dependsOn {
+            id("Testing1_FirstTask")
+        }
+    }
+}
+
+feature("Testing2") {
+    priority = 3
+    task("Testing2_FirstTask") {
+        implementation = "inc.kaizen.anukarma.task.integrationTest.FirstTask"
+        group = "test" //this is testing
+        strictDependency = false
+    }
+
+    task("Testing2_SecondTask") {
+        implementation = "inc.kaizen.anukarma.task.integrationTest.SecondTask"
+        group = "test"
+        strictDependency = false
+    }
+}

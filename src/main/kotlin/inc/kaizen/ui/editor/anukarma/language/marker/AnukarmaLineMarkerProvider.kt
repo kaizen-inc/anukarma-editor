@@ -23,15 +23,36 @@ class AnukarmaLineMarkerProvider: RelatedItemLineMarkerProvider() {
                             .setTargets(element)
                             .setTooltipText("Plugin")
                     result.add(builder.createLineMarkerInfo(element))
-                }
-                if ("stopOnFail".contentEquals(element.text) ||
+                }else if ("stopOnFail".contentEquals(element.text) ||
                     "incremental".contentEquals(element.text) ||
-                    "generateCode".contentEquals(element.text)
+                    "generateCode".contentEquals(element.text) ||
+                    "implementation".contentEquals(element.text) ||
+                    "group".contentEquals(element.text) ||
+                    "priority".contentEquals(element.text) ||
+                    "strictDependency".contentEquals(element.text)
                 ) {
                     val builder: NavigationGutterIconBuilder<PsiElement> =
                         NavigationGutterIconBuilder.create(AnukarmaIcons.PARAMETER)
                             .setTargets(element)
                             .setTooltipText("Property")
+                    result.add(builder.createLineMarkerInfo(element))
+                } else if ("extensions".contentEquals(element.text)) {
+                    val builder: NavigationGutterIconBuilder<PsiElement> =
+                        NavigationGutterIconBuilder.create(AnukarmaIcons.EXTENSION)
+                            .setTargets(element)
+                            .setTooltipText("Extension")
+                    result.add(builder.createLineMarkerInfo(element))
+                } else if ("task".contentEquals(element.text)) {
+                    val builder: NavigationGutterIconBuilder<PsiElement> =
+                        NavigationGutterIconBuilder.create(AnukarmaIcons.TASK)
+                            .setTargets(element)
+                            .setTooltipText("Extension")
+                    result.add(builder.createLineMarkerInfo(element))
+                } else if ("feature".contentEquals(element.text)) {
+                    val builder: NavigationGutterIconBuilder<PsiElement> =
+                        NavigationGutterIconBuilder.create(AnukarmaIcons.FEATURE)
+                            .setTargets(element)
+                            .setTooltipText("Extension")
                     result.add(builder.createLineMarkerInfo(element))
                 }
             }
@@ -42,6 +63,13 @@ class AnukarmaLineMarkerProvider: RelatedItemLineMarkerProvider() {
         return if ("stopOnFail".contentEquals(element.text) ||
             "incremental".contentEquals(element.text) ||
             "generateCode".contentEquals(element.text) ||
+            "implementation".contentEquals(element.text) ||
+            "group".contentEquals(element.text) ||
+            "priority".contentEquals(element.text) ||
+            "strictDependency".contentEquals(element.text) ||
+            "extensions".contentEquals(element.text) ||
+            "task".contentEquals(element.text) ||
+            "feature".contentEquals(element.text) ||
             "plugins".contentEquals(element.text)) {
             super.getLineMarkerInfo(element)
         } else {

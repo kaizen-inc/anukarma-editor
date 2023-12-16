@@ -34,7 +34,7 @@
 
         <lang.syntaxHighlighterFactory
                 language="Anukarma"
-                implementationClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaSyntaxHighlighterFactory"/>
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.highlight.AnukarmaSyntaxHighlighterFactory"/>
 
         <colorSettingsPage
                 implementation="inc.kaizen.ui.editor.anukarma.language.settings.AnukarmaColorSettingsPage"/>
@@ -42,6 +42,10 @@
         <completion.contributor
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.completion.AnukarmaCompletionContributor"/>
+
+        <lang.commenter
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.commenter.AnukarmaCommenter"/>
 
         <codeInsight.lineMarkerProvider
                 language="Anukarma"
