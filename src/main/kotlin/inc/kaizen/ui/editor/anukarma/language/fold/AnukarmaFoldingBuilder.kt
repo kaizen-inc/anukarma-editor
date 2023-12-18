@@ -49,6 +49,7 @@ class AnukarmaFoldingBuilder: FoldingBuilderEx(), DumbAware {
             navigate(child, descriptors)
         }
     }
+
     override fun getPlaceholderText(node: ASTNode): String {
         return StringUtil.THREE_DOTS
     }

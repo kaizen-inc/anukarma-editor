@@ -18,6 +18,7 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
@@ -57,12 +58,16 @@
 
 <!--        <navbar implementation="inc.kaizen.ui.editor.anukarma.language.structure.navbar.AnukarmaStructureAwareNavbar"/>-->
 
-        <!--<annotator
+        <annotator
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.annotate.AnukarmaAnnotator"/>
--->
+
         <lang.foldingBuilder
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.fold.AnukarmaFoldingBuilder"/>
+
+        <lang.findUsagesProvider
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.find.AnukarmaFindUsagesProvider"/>
     </extensions>
 </idea-plugin>
