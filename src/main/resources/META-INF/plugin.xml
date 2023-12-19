@@ -56,8 +56,6 @@
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.format.AnukarmaFormattingModelBuilder"/>
 
-<!--        <navbar implementation="inc.kaizen.ui.editor.anukarma.language.structure.navbar.AnukarmaStructureAwareNavbar"/>-->
-
         <annotator
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.annotate.AnukarmaAnnotator"/>
@@ -69,5 +67,12 @@
         <lang.findUsagesProvider
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.find.AnukarmaFindUsagesProvider"/>
+
+        <lang.psiStructureViewFactory
+                language="Anukarma"
+                implementationClass="inc.kaizen.ui.editor.anukarma.language.structure.view.AnukarmaStructureViewFactory"/>
+
+        <navbar implementation="inc.kaizen.ui.editor.anukarma.language.structure.navbar.AnukarmaStructureAwareNavbar"/>
+
     </extensions>
 </idea-plugin>
