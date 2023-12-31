@@ -10,13 +10,13 @@ import com.intellij.psi.tree.TokenSet
 
 class AnukarmaParserDefinition: ParserDefinition {
 
-    val FILE: IFileElementType = IFileElementType(AnukarmaLanguage)
+    val ANUKARMA: IFileElementType = IFileElementType(AnukarmaLanguage)
 
     override fun createLexer(project: Project?) = AnukarmaLexerAdapter()
 
     override fun createParser(project: Project?) = AnukarmaParser()
 
-    override fun getFileNodeType() = FILE
+    override fun getFileNodeType() = ANUKARMA
 
     override fun getCommentTokens() = COMMENTS
 

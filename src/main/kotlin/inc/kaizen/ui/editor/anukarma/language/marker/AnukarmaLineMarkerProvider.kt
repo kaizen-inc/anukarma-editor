@@ -46,13 +46,25 @@ class AnukarmaLineMarkerProvider: RelatedItemLineMarkerProvider() {
                     val builder: NavigationGutterIconBuilder<PsiElement> =
                         NavigationGutterIconBuilder.create(AnukarmaIcons.TASK)
                             .setTargets(element)
-                            .setTooltipText("Extension")
+                            .setTooltipText("Task")
                     result.add(builder.createLineMarkerInfo(element))
                 } else if ("feature".contentEquals(element.text)) {
                     val builder: NavigationGutterIconBuilder<PsiElement> =
                         NavigationGutterIconBuilder.create(AnukarmaIcons.FEATURE)
                             .setTargets(element)
-                            .setTooltipText("Extension")
+                            .setTooltipText("Feature")
+                    result.add(builder.createLineMarkerInfo(element))
+                } else if ("id".contentEquals(element.text)) {
+                    val builder: NavigationGutterIconBuilder<PsiElement> =
+                        NavigationGutterIconBuilder.create(AnukarmaIcons.LINK)
+                            .setTargets(element)
+                            .setTooltipText("ID")
+                    result.add(builder.createLineMarkerInfo(element))
+                } else if ("file".contentEquals(element.text)) {
+                    val builder: NavigationGutterIconBuilder<PsiElement> =
+                        NavigationGutterIconBuilder.create(AnukarmaIcons.NAVIGATE)
+                            .setTargets(element)
+                            .setTooltipText("File")
                     result.add(builder.createLineMarkerInfo(element))
                 }
             }
@@ -70,6 +82,8 @@ class AnukarmaLineMarkerProvider: RelatedItemLineMarkerProvider() {
             "extensions".contentEquals(element.text) ||
             "task".contentEquals(element.text) ||
             "feature".contentEquals(element.text) ||
+            "id".contentEquals(element.text) ||
+            "file".contentEquals(element.text) ||
             "plugins".contentEquals(element.text)) {
             super.getLineMarkerInfo(element)
         } else {
