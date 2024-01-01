@@ -5,6 +5,7 @@ import com.intellij.ide.structureView.StructureViewModelBase
 import com.intellij.ide.structureView.StructureViewTreeElement
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiFile
+import com.intellij.psi.impl.source.tree.LeafPsiElement
 import javax.annotation.Nullable
 
 class AnukarmaStructureViewModel(@Nullable editor: Editor, psiFile: PsiFile):
@@ -15,9 +16,11 @@ class AnukarmaStructureViewModel(@Nullable editor: Editor, psiFile: PsiFile):
         return super.getCurrentEditorElement()
     }
 
-    override fun isAlwaysShowsPlus(element: StructureViewTreeElement?) = true
+    override fun isAlwaysShowsPlus(element: StructureViewTreeElement?): Boolean {
+        return false
+    }
 
     override fun isAlwaysLeaf(element: StructureViewTreeElement?): Boolean {
-        return element?.value == null
+        return element?.value is LeafPsiElement
     }
 }
