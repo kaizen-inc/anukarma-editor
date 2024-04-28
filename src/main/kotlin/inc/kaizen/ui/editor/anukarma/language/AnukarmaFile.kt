@@ -6,5 +6,5 @@ import org.jetbrains.annotations.NotNull
 
 class AnukarmaFile(@NotNull viewProvider: FileViewProvider): PsiFileBase(viewProvider, AnukarmaLanguage) {
 
-    override fun getFileType() = AnukarmaLanguageFileType()
+    override fun getFileType() = INSTANCE
 }

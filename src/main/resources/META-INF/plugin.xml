@@ -68,11 +68,16 @@
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.find.AnukarmaFindUsagesProvider"/>
 
+        <gotoSymbolContributor
+                implementation="inc.kaizen.ui.editor.anukarma.language.symbol.AnukarmaChooseByNameContributor"/>
+
         <lang.psiStructureViewFactory
                 language="Anukarma"
                 implementationClass="inc.kaizen.ui.editor.anukarma.language.structure.view.AnukarmaStructureViewFactory"/>
 
         <navbar implementation="inc.kaizen.ui.editor.anukarma.language.structure.navbar.AnukarmaStructureAwareNavbar"/>
+
+        <iconProvider implementation="inc.kaizen.ui.editor.anukarma.language.icon.AnukarmaIconProvider"/>
 
     </extensions>
 </idea-plugin>

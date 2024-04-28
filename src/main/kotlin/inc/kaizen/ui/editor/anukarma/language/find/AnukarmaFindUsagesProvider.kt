@@ -9,23 +9,25 @@ import com.intellij.psi.tree.TokenSet
 import com.intellij.psi.util.elementType
 import inc.kaizen.ui.editor.anukarma.language.AnukarmaLexerAdapter
 import inc.kaizen.ui.editor.anukarma.language.COMMENTS
-import inc.kaizen.ui.editor.anukarma.language.TASK
+import inc.kaizen.ui.editor.anukarma.language.ID
 
 class AnukarmaFindUsagesProvider: FindUsagesProvider {
 
     override fun getWordsScanner(): WordsScanner {
         return DefaultWordsScanner(AnukarmaLexerAdapter(),
-            TASK,
+            ID,
             COMMENTS,
             TokenSet.EMPTY)
     }
-    override fun canFindUsagesFor(element: PsiElement) = element is PsiNamedElement
+    override fun canFindUsagesFor(element: PsiElement): Boolean {
+        return element is PsiNamedElement
+    }
 
     override fun getHelpId(element: PsiElement) = null
 
     override fun getType(element: PsiElement) = element.elementType.toString()
 
-    override fun getDescriptiveName(element: PsiElement) = element.text.toString()
+    override fun getDescriptiveName(element: PsiElement) = element.node.text
 
-    override fun getNodeText(element: PsiElement, useFullName: Boolean) = element.text.toString()
+    override fun getNodeText(element: PsiElement, useFullName: Boolean) = element.node.text
 }

@@ -18,17 +18,19 @@ object BooleanCompletionProvider : AnukarmaCompletionProvider() {
 //            override fun accepts(elem: PsiElement, context: ProcessingContext?) = isTopLevel(elem)
 //        })
     override val context: ElementPattern<PsiElement>
-        get() = psiElement()
-            .andOr(
-                psiElement().withElementType(IAnukarmaLanguageFileType.PROPERTY),
-//                psiElement().withElementType(IAnukarmaLanguageFileType.IDENTIFIER),
+        get() = psiElement(IAnukarmaLanguageFileType.IDENTIFIER)
+//        get() = psiElement(IAnukarmaLanguageFileType.VALUE)//.withElementType(IAnukarmaLanguageFileType.VALUE)
+//            .andOr(
+//                psiElement().withElementType(IAnukarmaLanguageFileType.CONTENT),
 //                psiElement().withElementType(IAnukarmaLanguageFileType.PROPERTY),
+//                psiElement().withElementType(IAnukarmaLanguageFileType.IDENTIFIER),
+////                psiElement().withElementType(IAnukarmaLanguageFileType.PROPERTY),
 //                psiElement().withElementType(IAnukarmaLanguageFileType.KEY),
 //                psiElement().withElementType(IAnukarmaLanguageFileType.VALUE),
 //                psiElement().withElementType(IAnukarmaLanguageFileType.BOOLEAN),
-//                psiElement().withElementType(IAnukarmaLanguageFileType.TASK_SECTION),
-                //other top level stuff
-            )
+////                psiElement().withElementType(IAnukarmaLanguageFileType.TASK_SECTION),
+//                //other top level stuff
+//            )
 
 
     override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {

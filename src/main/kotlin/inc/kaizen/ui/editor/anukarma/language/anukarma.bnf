@@ -1,5 +1,6 @@
 {
   parserClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaParser"
+  parserUtilClass="inc.kaizen.ui.editor.anukarma.language.impl.AnukarmaParserUtil"
 
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
@@ -11,6 +12,8 @@
   elementTypeHolderClass="inc.kaizen.ui.editor.anukarma.language.IAnukarmaLanguageFileType"
   elementTypeClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaElementType"
   tokenTypeClass="inc.kaizen.ui.editor.anukarma.language.AnukarmaTokenType"
+
+  psiImplUtilClass="inc.kaizen.ui.editor.anukarma.language.util.AnukarmaPsiImplUtil"
 
   tokens=[
       EOL=";"
@@ -44,9 +47,17 @@ CONTENT ::= (PROPERTY|COMMENT|BLOCK_COMMENT|WHITESPACES|PLUGIN_SECTION|EXTENSION
 
 SPACES ::= WHITESPACES*
 
-PROPERTY ::= (KEY SPACES SEPARATOR SPACES VALUE)
-KEY ::= stopOnFail | incremental | generateCode
-VALUE ::= BOOLEAN
+PROPERTY ::= (KEY SPACES SEPARATOR SPACES VALUE) {
+//   mixin="inc.kaizen.ui.editor.anukarma.language.impl.AnukarmaPropertyImpl"
+//   implements="inc.kaizen.ui.editor.anukarma.language.AnukarmaProperty"
+   methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+KEY ::= (stopOnFail | incremental | generateCode) {
+    methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+VALUE ::= (BOOLEAN) {
+    methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
 
 PLUGIN_SECTION ::= plugins SPACES OPEN_BRACKET (WHITESPACES|PLUGIN_ID)* CLOSE_BRACKET
 PLUGIN_ID ::= id SPACES LPAR SPACES QUOTE SPACES PLUGIN_ID_VALUE SPACES QUOTE SPACES RPAR
